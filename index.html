@@ -7,58 +7,96 @@
     <title>Cocktail Wizard</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css" />
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="https://kit.fontawesome.com/ac742855a0.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
     <!-- HEADER -->
     <section class="navbar is-small is-primary p-3">
-      <img class="image" src="./assets/images/temp-logo-thing.png">
+      <img class="image" src="./assets/images/temp-logo-thing.png" />
       <div class="hero-body">
-          <p class="title">Cocktail Wizard</p>
-        </div>
+        <p class="title">Cocktail Wizard</p>
+      </div>
     </section>
 
     <!-- SUB HEADER -->
     <p class="title has-text-centered">Find a cocktail by...</p>
+
     <div class="columns m-5 is-justify-content-center">
+      <!-- Modal Drink Name -->
+      <div id="name-modal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content box has-text-centered">
+          <div class="field is-half">
+            <p class="control has-icons-left has-icons-right">
+              <input class="input" type="text" placeholder="Drink Name" />
+              <span class="icon is-small is-left">
+                <i class="fa-solid fa-martini-glass"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control">
+              <button class="button is-success">Conjure Drink</button>
+            </p>
+          </div>
+        </div>
+        <button id="name-close" class="modal-close is-large" aria-label="close"></button>
+      </div>
+
+      <!--Modal Ingredient  -->
+      <div id="ingr-modal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-content box has-text-centered">
+          <div class="field is-half">
+            <p class="control has-icons-left has-icons-right">
+              <input class="input" type="text" placeholder="Ingredient Name" />
+              <span class="icon is-small is-left">
+                <i class="fa-regular fa-lemon"></i>
+              </span>
+            </p>
+          </div>
+          <div class="field">
+            <p class="control">
+              <button class="button is-success">Conjure Drink</button>
+            </p>
+          </div>
+        </div>
+        <button id="ingr-close" class="modal-close is-large" aria-label="close"></button>
+      </div>
 
       <!-- FIRST CARD -->
       <div class="column has-text-centered is-one-third">
-        <a href="google.com">
-          <div class="card has-background-primary">
-            <p class="title">Name</p>
-            <div class="card-image m-5">
-              <figure class="inline-block">
-                <img src="./assets/images/margarita_3.png" alt="Placeholder image">
-              </figure>
-            </div>
+        <div id="name-card" class="card has-background-primary">
+          <p class="title">Name</p>
+          <div class="card-image m-5">
+            <figure class="inline-block">
+              <img src="./assets/images/margarita_3.png" alt="Placeholder image" />
+            </figure>
           </div>
-        </a>
+        </div>
 
         <!-- SECOND CARD -->
-        <a href="google.com">
-          <div class="card has-background-primary">
-            <p class="title">Ingredients</p>
-            <div class="card-image m-5">
-              <figure class="inline-block">
-                <img src="./assets/images/lime_1.png" alt="Placeholder image">
-              </figure>
-            </div>
+
+        <div id="ingr-card" class="card has-background-primary">
+          <p class="title">Ingredients</p>
+          <div class="card-image m-5">
+            <figure class="inline-block">
+              <img src="./assets/images/lime_1.png" alt="Placeholder image" />
+            </figure>
           </div>
-        </a>
+        </div>
 
         <!-- THIRD CARD -->
-        <a href="google.com">
-          <div class="card has-background-primary">
-            <p class="title">Random</p>
-            <div class="card-image m-5">
-              <figure class="inline-block">
-                <img src="./assets/images/forgetful.png" alt="Placeholder image">
-              </figure>
-            </div>
+        <div id="rand-card" class="card has-background-primary">
+          <p class="title">Random</p>
+          <div class="card-image m-5">
+            <figure class="inline-block">
+              <img src="./assets/images/forgetful.png" alt="Placeholder image" />
+            </figure>
           </div>
-        </a>
-      </div> 
+        </div>
+      </div>
     </div>
 
     <script src="./assets/js/script.js"></script>
