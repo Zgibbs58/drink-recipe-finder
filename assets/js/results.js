@@ -12,7 +12,7 @@ function getDrinkName(inp) {
 
   // function to fetch based on INGREDIENT
   function getIngrName(inp) {
-    var reqName = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i${inp}`;
+    var reqName = `https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=${inp}`;
     fetch(reqName)
     .then(function (response) {
       return response.json();
