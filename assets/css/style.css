@@ -1,3 +1,10 @@
 .card {
-    border-radius: 20px;
+  border-radius: 20px;
+}
+#name-card:hover,
+#ingr-card:hover,
+#rand-card:hover {
+  cursor: pointer;
+  color: rgba(255, 255, 255, 1);
+  box-shadow: 5px 15px 25px rgba(145, 92, 182, 0.5);
 }
