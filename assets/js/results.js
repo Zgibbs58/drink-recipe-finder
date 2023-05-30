@@ -7,6 +7,7 @@ function getDrinkName(inp) {
     })
     .then(function (data) {
       console.log(data);
+      popList(data);
     });
 }
 
@@ -59,5 +60,13 @@ function getRandom() {
     });
 }
 
+// conditionals to check if local storage has drinkName or drinkIngr and run the correct function based on user input
+if (localStorage.getItem("drinkIngr")) {
+  getIngrName(JSON.parse(localStorage.getItem("drinkIngr")));
+} else if (localStorage.getItem("drinkName")) {
+  getDrinkName(JSON.parse(localStorage.getItem("drinkName")));
+}
+// else {randDrink()}
 // test function run
-getIngrName("tequila");
+// getIngrName(JSON.parse(localStorage.getItem("drinkIngr")));
+// console.log(JSON.parse(localStorage.getItem("drinkIngr")));
