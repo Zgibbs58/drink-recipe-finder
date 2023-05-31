@@ -1,3 +1,12 @@
+:root {
+  --purp: rgb(113, 45, 144);
+  --lightpurp: #f8eaff;
+}
+
+html {
+  background-color: var(--lightpurp);
+}
+
 .card {
   border-radius: 20px;
 }
@@ -7,4 +16,14 @@
   cursor: pointer;
   color: rgba(255, 255, 255, 1);
   box-shadow: 5px 15px 25px rgba(145, 92, 182, 0.5);
+}
+
+.navbar,
+.card {
+  background-color: var(--purp);
+  color: var(--lightpurp);
+}
+
+#title {
+  color: white;
 }
