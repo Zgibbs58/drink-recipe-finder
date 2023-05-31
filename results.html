@@ -13,19 +13,24 @@
   <body class="">
     <!-- HEADER -->
     <section class="navbar is-small p-3">
-      <img class="image" width="200px" src="./assets/images/whiteCocktailWizard.png" />
+      <a href="./index.html"><img class="image" width="200px" src="./assets/images/whiteCocktailWizard.png" /></a>
       <!-- <div class="hero-body">
         <p class="title">Cocktail Wizard</p>
       </div> -->
     </section>
 
     <div class="container is-variable">
-
-        <div id="popList" class="columns is-centered is-multiline p-5">
+      <div id="popList" class="columns is-centered is-multiline p-5"></div>
+      <div id="popDrink" class="columns is-centered p-5">
+        <div class="box has-text-centered">
+          <img id="drink-img" src="" alt="drink-image" width="400" />
+          <p id="drink-name" class="title p-5"></p>
+          <p id="instruct" class="p-5"></p>
+          <p class="subtitle is-underlined">Drink Ingredients</p>
+          <ul id="meas-ingr"></ul>
         </div>
+      </div>
     </div>
-
-    
 
     <script src="./assets/js/results.js"></script>
   </body>

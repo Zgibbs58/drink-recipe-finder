@@ -8,6 +8,7 @@ var nameInput = document.querySelector("#name-input");
 var ingrInput = document.querySelector("#ingr-input");
 var nameBtn = document.querySelector("#name-conjure-btn");
 var ingrBtn = document.querySelector("#ingr-conjure-btn");
+var ingrBtn = document.querySelector("#ingr-conjure-btn");
 
 document.querySelector("#name-card").addEventListener("click", function () {
   nameModal.classList.add("is-active");
@@ -21,6 +22,9 @@ document.querySelector("#ingr-card").addEventListener("click", function () {
 });
 document.querySelector("#ingr-close").addEventListener("click", function () {
   ingrModal.classList.remove("is-active");
+});
+document.querySelector("#rand-card").addEventListener("click", function () {
+  window.location = "./results.html";
 });
 // click events to save values entered in local storage, make modal inactive, and load results page
 nameBtn.addEventListener("click", function () {

@@ -27,6 +27,7 @@ function getIngrName(inp) {
 
 // function to populate list created by getIngrName()
 function popList(data) {
+  document.querySelector("#popDrink").setAttribute("style", "display:none");
   console.log(data);
   var ulEl = document.querySelector("#popList");
   data.drinks.forEach((drink) => {
@@ -50,40 +51,24 @@ function popList(data) {
 
 // function to populate RECIPE and drink info fetched by getDrinkName()
 function popDrinkData(data) {
+  document.querySelector("#popDrink").setAttribute("style", "display:null");
+  console.log(data);
   var drinks = data.drinks[0];
-    //strDrink - name
-  // console.log(data.drinks[0].strDrink);
-
-    //strDrinkThumb - drink picture
-  // console.log(data.drinks[0].strDrinkThumb);
-
+  document.querySelector("#drink-img").setAttribute("src", drinks.strDrinkThumb);
+  document.querySelector("#drink-name").textContent = drinks.strDrink;
+  document.querySelector("#instruct").textContent = drinks.strInstructions;
+  // console.log(drinks.strVideo); video from youtube
 
   for (const key in data.drinks[0]) {
     if (/^strIngredient/.test(key) && drinks[key]) {
       var num = key[key.length - 1];
+      var liEL = document.createElement("li");
+      liEL.textContent = drinks["strMeasure" + num] + " " + drinks["strIngredient" + num];
+      document.querySelector("#meas-ingr").append(liEL);
       console.log(drinks["strMeasure" + num] + drinks["strIngredient" + num]);
     }
   }
-
-  //strInstructions
-  // console.log(data.drinks[0].strInstructions);
-
-
-  //strVideo - if exists
-  // console.log(data.drinks[0].strVideo);
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
 // function to fetch RANDOM
 function getRandom() {
@@ -94,6 +79,7 @@ function getRandom() {
     })
     .then(function (data) {
       console.log(data);
+      getDrinkName(data.drinks[0].strDrink);
     });
 }
 
