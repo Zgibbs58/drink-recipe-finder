@@ -6,8 +6,8 @@ function getDrinkName(inp) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
-      popList(data);
+      // console.log(data);
+      popDrinkData(data);
     });
 }
 
@@ -48,6 +48,43 @@ function popList(data) {
   });
 }
 
+// function to populate RECIPE and drink info fetched by getDrinkName()
+function popDrinkData(data) {
+  var drinks = data.drinks[0];
+    //strDrink - name
+  // console.log(data.drinks[0].strDrink);
+
+    //strDrinkThumb - drink picture
+  // console.log(data.drinks[0].strDrinkThumb);
+
+
+  for (const key in data.drinks[0]) {
+    if (/^strIngredient/.test(key) && drinks[key]) {
+      var num = key[key.length - 1];
+      console.log(drinks["strMeasure" + num] + drinks["strIngredient" + num]);
+    }
+  }
+
+  //strInstructions
+  // console.log(data.drinks[0].strInstructions);
+
+
+  //strVideo - if exists
+  // console.log(data.drinks[0].strVideo);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 // function to fetch RANDOM
 function getRandom() {
   var reqName = `https://www.thecocktaildb.com/api/json/v1/1/random.php`;
@@ -65,6 +102,8 @@ if (localStorage.getItem("drinkIngr")) {
   getIngrName(JSON.parse(localStorage.getItem("drinkIngr")));
 } else if (localStorage.getItem("drinkName")) {
   getDrinkName(JSON.parse(localStorage.getItem("drinkName")));
+} else {
+  getRandom();
 }
 // else {randDrink()}
 // test function run
