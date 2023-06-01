@@ -1,3 +1,4 @@
+var strVid;
 // function to fetch based on DRINK NAME
 function getDrinkName(inp) {
   var reqName = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${inp}`;
@@ -6,7 +7,6 @@ function getDrinkName(inp) {
       return response.json();
     })
     .then(function (data) {
-      // console.log(data);
       popDrinkData(data);
     });
 }
@@ -43,7 +43,6 @@ function popList(data) {
     liEl.append(txtEl);
     liEl.addEventListener("click", function (event) {
       getDrinkName(event.target.id);
-      // move below line to getDrinkName function if issues rendering drink name page
       document.querySelector("#popList").textContent = "";
     });
   });
@@ -57,8 +56,7 @@ function popDrinkData(data) {
   document.querySelector("#drink-img").setAttribute("src", drinks.strDrinkThumb);
   document.querySelector("#drink-name").textContent = drinks.strDrink;
   document.querySelector("#instruct").textContent = drinks.strInstructions;
-  // console.log(drinks.strVideo); video from youtube
-
+  
   for (const key in data.drinks[0]) {
     if (/^strIngredient/.test(key) && drinks[key]) {
       var num = key[key.length - 1];
@@ -67,6 +65,12 @@ function popDrinkData(data) {
       document.querySelector("#meas-ingr").append(liEL);
       console.log(drinks["strMeasure" + num] + drinks["strIngredient" + num]);
     }
+  }
+  
+  if (drinks.strVideo !== null) {
+    strVid = drinks.strVideo.split("=");
+    document.querySelector("#player").setAttribute("src", `https://www.youtube.com/embed/${strVid[1]}`);
+    // location.reload();
   }
 }
 
@@ -91,7 +95,40 @@ if (localStorage.getItem("drinkIngr")) {
 } else {
   getRandom();
 }
-// else {randDrink()}
-// test function run
-// getIngrName(JSON.parse(localStorage.getItem("drinkIngr")));
-// console.log(JSON.parse(localStorage.getItem("drinkIngr")));
+
+// YT API for embedding videos
+var tag = document.createElement('script');
+
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+var player;
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    height: '390',
+    width: '640',
+    videoId: ``,
+    playerVars: {
+      'playsinline': 1
+    },
+    events: {
+      'onStateChange': onPlayerStateChange
+    }
+  });
+}
+
+function onPlayerReady(event) {
+  event.target.playVideo();
+}
+
+var done = false;
+function onPlayerStateChange(event) {
+  if (event.data == YT.PlayerState.PLAYING && !done) {
+    setTimeout(stopVideo, 6000);
+    done = true;
+  }
+}
+function stopVideo() {
+  player.stopVideo();
+}
