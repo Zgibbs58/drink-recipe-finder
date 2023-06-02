@@ -20,7 +20,6 @@ function getIngrName(inp) {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       popList(data);
     });
 }
@@ -28,7 +27,6 @@ function getIngrName(inp) {
 // function to populate list created by getIngrName()
 function popList(data) {
   document.querySelector("#popDrink").setAttribute("style", "display:none");
-  console.log(data);
   var ulEl = document.querySelector("#popList");
   data.drinks.forEach((drink) => {
     liEl = document.createElement("div");
@@ -51,7 +49,6 @@ function popList(data) {
 // function to populate RECIPE and drink info fetched by getDrinkName()
 function popDrinkData(data) {
   document.querySelector("#popDrink").setAttribute("style", "display:null");
-  console.log(data);
   var drinks = data.drinks[0];
   document.querySelector("#drink-img").setAttribute("src", drinks.strDrinkThumb);
   document.querySelector("#drink-name").textContent = drinks.strDrink;
@@ -63,7 +60,6 @@ function popDrinkData(data) {
       var liEL = document.createElement("li");
       liEL.textContent = drinks["strMeasure" + num] + " " + drinks["strIngredient" + num];
       document.querySelector("#meas-ingr").append(liEL);
-      console.log(drinks["strMeasure" + num] + drinks["strIngredient" + num]);
     }
   }
 
@@ -87,7 +83,6 @@ function getRandom() {
       return response.json();
     })
     .then(function (data) {
-      console.log(data);
       getDrinkName(data.drinks[0].strDrink);
     });
 }
