@@ -42,7 +42,18 @@ html {
   color: white;
 }
 
+#searchBy {
+  padding-top: 24px;
+}
+
 .drink-card {
   max-width: 1100px;
   border: 5px solid var(--purp);
+}
+
+@media only screen and (max-width: 768px) {
+  #player {
+    width: auto;
+    height: auto;
+  }
 }
