@@ -29,13 +29,17 @@ html {
   color: var(--lightpurp);
 }
 /* list results hover with same effect as search by */
-.list-result {
+.list-result, #branding {
   transition: all 0.4s ease-in-out;
 }
-.list-result:hover {
+
+#branding {
+  border-radius: 25px;
+}
+
+.list-result:hover, #branding:hover {
   cursor: pointer;
   box-shadow: 5px 15px 25px rgba(145, 92, 182, 0.7);
-  transition: all 0.4s ease-in-out;
 }
 
 #title {
@@ -49,6 +53,10 @@ html {
 .drink-card {
   max-width: 1100px;
   border: 5px solid var(--purp);
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 @media only screen and (max-width: 768px) {
