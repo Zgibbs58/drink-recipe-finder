@@ -22,17 +22,23 @@
     <div class="container is-variable">
       <div id="popList" class="columns is-centered is-multiline p-5"></div>
       <div id="popDrink" class="columns is-centered p-5">
-        <div class="box has-text-centered">
-          <img id="drink-img" src="" alt="drink-image" width="400" />
+        <div class="drink-card column box has-text-centered">
           <p id="drink-name" class="title p-5"></p>
-          <p id="instruct" class="p-5"></p>
-          <p class="subtitle is-underlined">Drink Ingredients</p>
-          <ul id="meas-ingr"></ul>
+          <div class="columns">
+            <div class="column"><img id="drink-img" src="" alt="drink-image" width="250" /></div>
+            <div class="column">
+              <p class="subtitle is-underlined">Drink Ingredients</p>
+              <ul id="meas-ingr"></ul>
+            </div>
+            <div class="column">
+              <p class="subtitle is-underlined">Drink Instructions</p>
+              <p id="instruct"></p>
+            </div>
+          </div>
 
           <div id="ytCont" class="pt-5">
             <div id="player"></div>
           </div>
-
         </div>
       </div>
     </div>
