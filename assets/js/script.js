@@ -28,12 +28,44 @@ document.querySelector("#rand-card").addEventListener("click", function () {
 });
 // click events to save values entered in local storage, make modal inactive, and load results page
 nameBtn.addEventListener("click", function () {
-  localStorage.setItem("drinkName", JSON.stringify(nameInput.value));
-  nameModal.classList.remove("is-active");
-  window.location = "./results.html";
+  var reqName = `https://www.thecocktaildb.com/api/json/v1/1/search.php?s=${nameInput.value.trim()}`;
+  console.log(nameInput.value.trim());
+  fetch(reqName)
+    .then(function (response) {
+      // response status to alert user the data cannot be fetched
+      if (response.status !== 200) {
+        return alert("Status 404");
+      }
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data.drinks);
+      // data.drinks is null if the drink name does not exis. IF it is null or nothing entered the try again modal is active
+      if (data.drinks === null || !nameInput.value) {
+        bulmaToast.toast({ message: "Please enter a valid drink name!", type: "is-danger", position: "center" });
+        return;
+      }
+      // if not normal actions taken
+      localStorage.setItem("drinkName", JSON.stringify(nameInput.value.trim()));
+      nameModal.classList.remove("is-active");
+      window.location = "./results.html";
+    });
 });
 ingrBtn.addEventListener("click", function () {
-  localStorage.setItem("drinkIngr", JSON.stringify(ingrInput.value));
-  ingrModal.classList.remove("is-active");
-  window.location = "./results.html";
+  var reqName = `https://www.thecocktaildb.com/api/json/v1/1/search.php?i=${ingrInput.value.trim()}`;
+  fetch(reqName)
+    .then(function (response) {
+      JSON.stringify(response);
+      return response.json();
+    })
+    .then(function (data) {
+      console.log(data);
+      if (data.ingredients === null || !ingrInput.value) {
+        bulmaToast.toast({ message: "Please enter a valid ingredient name!", type: "is-danger", position: "center" });
+        return;
+      }
+      localStorage.setItem("drinkIngr", JSON.stringify(ingrInput.value.trim()));
+      nameModal.classList.remove("is-active");
+      window.location = "./results.html";
+    });
 });

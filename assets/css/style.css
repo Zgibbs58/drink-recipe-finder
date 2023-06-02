@@ -10,12 +10,17 @@ html {
 .card {
   border-radius: 20px;
 }
+#name-card,
+#ingr-card,
+#rand-card {
+  transition: all 0.4s ease-in-out;
+}
 #name-card:hover,
 #ingr-card:hover,
 #rand-card:hover {
   cursor: pointer;
   color: rgba(255, 255, 255, 1);
-  box-shadow: 5px 15px 25px rgba(145, 92, 182, 0.5);
+  box-shadow: 5px 15px 25px rgba(145, 92, 182, 0.7);
 }
 
 .navbar,
@@ -23,7 +28,21 @@ html {
   background-color: var(--purp);
   color: var(--lightpurp);
 }
+/* list results hover with same effect as search by */
+.list-result {
+  transition: all 0.4s ease-in-out;
+}
+.list-result:hover {
+  cursor: pointer;
+  box-shadow: 5px 15px 25px rgba(145, 92, 182, 0.7);
+  transition: all 0.4s ease-in-out;
+}
 
 #title {
   color: white;
+}
+
+.drink-card {
+  max-width: 1100px;
+  border: 5px solid var(--purp);
 }

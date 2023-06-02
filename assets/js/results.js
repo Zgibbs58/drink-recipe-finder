@@ -56,7 +56,7 @@ function popDrinkData(data) {
   document.querySelector("#drink-img").setAttribute("src", drinks.strDrinkThumb);
   document.querySelector("#drink-name").textContent = drinks.strDrink;
   document.querySelector("#instruct").textContent = drinks.strInstructions;
-  
+
   for (const key in data.drinks[0]) {
     if (/^strIngredient/.test(key) && drinks[key]) {
       var num = key[key.length - 1];
@@ -66,11 +66,14 @@ function popDrinkData(data) {
       console.log(drinks["strMeasure" + num] + drinks["strIngredient" + num]);
     }
   }
-  
+
   if (drinks.strVideo !== null) {
     strVid = drinks.strVideo.split("=");
     document.querySelector("#player").setAttribute("src", `https://www.youtube.com/embed/${strVid[1]}`);
-    // location.reload();
+  }
+  // added else to set display to none if no strVideo is found
+  else {
+    document.querySelector("#ytCont").setAttribute("style", "display:none");
   }
 }
 
@@ -97,24 +100,24 @@ if (localStorage.getItem("drinkIngr")) {
 }
 
 // YT API for embedding videos
-var tag = document.createElement('script');
+var tag = document.createElement("script");
 
 tag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName('script')[0];
+var firstScriptTag = document.getElementsByTagName("script")[0];
 firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 var player;
 function onYouTubeIframeAPIReady() {
-  player = new YT.Player('player', {
-    height: '390',
-    width: '640',
+  player = new YT.Player("player", {
+    height: "390",
+    width: "640",
     videoId: ``,
     playerVars: {
-      'playsinline': 1
+      playsinline: 1,
     },
     events: {
-      'onStateChange': onPlayerStateChange
-    }
+      onStateChange: onPlayerStateChange,
+    },
   });
 }
 
