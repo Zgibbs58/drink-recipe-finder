@@ -33,11 +33,11 @@ function popList(data) {
   data.drinks.forEach((drink) => {
     liEl = document.createElement("div");
     txtEl = document.createElement("p");
-    liEl.setAttribute("class", "box has-text-centered m-5");
+    liEl.setAttribute("class", "list-result box has-text-centered m-5");
     liEl.setAttribute("id", `${drink.strDrink}`);
     txtEl.setAttribute("class", "content is-small");
     txtEl.setAttribute("id", `${drink.strDrink}`);
-    liEl.innerHTML = `<img id="${drink.strDrink}" width="128" height="128" src=${drink.strDrinkThumb}>`;
+    liEl.innerHTML = `<img  id="${drink.strDrink}" width="128" height="128" src=${drink.strDrinkThumb}>`;
     txtEl.innerHTML = `${drink.strDrink}`;
     ulEl.append(liEl);
     liEl.append(txtEl);
@@ -70,10 +70,12 @@ function popDrinkData(data) {
   if (drinks.strVideo !== null) {
     strVid = drinks.strVideo.split("=");
     document.querySelector("#player").setAttribute("src", `https://www.youtube.com/embed/${strVid[1]}`);
+    document.querySelector("#noVideo").setAttribute("style", "display:none");
   }
   // added else to set display to none if no strVideo is found
   else {
     document.querySelector("#ytCont").setAttribute("style", "display:none");
+    document.querySelector("#noVideo").setAttribute("style", "display:null");
   }
 }
 
@@ -135,3 +137,4 @@ function onPlayerStateChange(event) {
 function stopVideo() {
   player.stopVideo();
 }
+
