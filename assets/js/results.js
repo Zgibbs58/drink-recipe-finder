@@ -31,9 +31,9 @@ function popList(data) {
   data.drinks.forEach((drink) => {
     liEl = document.createElement("div");
     txtEl = document.createElement("p");
-    liEl.setAttribute("class", "list-result box has-text-centered m-5");
+    liEl.setAttribute("class", "list-result column box has-text-centered m-5 is-one-fifth");
     liEl.setAttribute("id", `${drink.strDrink}`);
-    txtEl.setAttribute("class", "content is-small");
+    txtEl.setAttribute("class", "content subtitle");
     txtEl.setAttribute("id", `${drink.strDrink}`);
     liEl.innerHTML = `<img  id="${drink.strDrink}" width="128" height="128" src=${drink.strDrinkThumb}>`;
     txtEl.innerHTML = `${drink.strDrink}`;
@@ -132,4 +132,3 @@ function onPlayerStateChange(event) {
 function stopVideo() {
   player.stopVideo();
 }
-
