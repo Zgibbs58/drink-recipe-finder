@@ -28,8 +28,9 @@ html {
   background-color: var(--purp);
   color: var(--lightpurp);
 }
-/* list results hover with same effect as search by */
-.list-result, #branding {
+
+.list-result,
+#branding {
   transition: all 0.4s ease-in-out;
 }
 
@@ -37,7 +38,8 @@ html {
   border-radius: 25px;
 }
 
-.list-result:hover, #branding:hover {
+.list-result:hover,
+#branding:hover {
   cursor: pointer;
   box-shadow: 5px 15px 25px rgba(145, 92, 182, 0.7);
 }
